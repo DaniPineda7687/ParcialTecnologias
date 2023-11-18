@@ -47,4 +47,20 @@ public class DbPostgreSQL extends DbConnection{
 
         return date;
     }
+
+    @Override
+    public String getCurrentHour(Connection connection) {
+        String query = "SELECT CURRENT_TIME AT TIME ZONE 'America/Bogota'";
+        String hour = "";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                hour = resultSet.getTime(1).toString();
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return hour;
+    }
 }

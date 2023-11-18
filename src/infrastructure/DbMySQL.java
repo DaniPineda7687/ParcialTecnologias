@@ -35,13 +35,26 @@ public class DbMySQL extends DbConnection{
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
                 date = resultSet.getDate(1).toString();
-
             }
-
         }catch (Exception ex){
             System.out.println(ex.getMessage());
         }
-
         return date;
+    }
+
+    @Override
+    public String getCurrentHour(Connection connection) {
+        String query = "SELECT CONVERT_TZ(CURRENT_TIME(), 'UTC', 'America/Bogota')";
+        String hour = "";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                hour = resultSet.getTime(1).toString();
+            }
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return hour;
     }
 }
