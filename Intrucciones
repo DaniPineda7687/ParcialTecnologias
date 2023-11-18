@@ -1,0 +1,14 @@
+sudo docker compose up
+sudo docker ps
+sudo docker exec -it id-mysql bash
+mysql -u root -p
+Password: root
+Ejecutar scripts.sql
+exit
+exit
+
+sudo docker exec -it id-postgres bash
+psql
+Ejecutar scripts.sql
+exit
+exit
