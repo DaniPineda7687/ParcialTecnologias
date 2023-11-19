@@ -39,8 +39,9 @@ public class JSONReader extends ReaderConfiguration {
                 String password = databaseProperty.get("password").asText();
                 int port = databaseProperty.get("port").asInt();
                 String bd = databaseProperty.get("bd").asText();
+                String host = databaseProperty.get("host").asText();
 
-                dbConfiguration = new DbConfiguration(user, password, port, bd);
+                dbConfiguration = new DbConfiguration(user, password, port, bd, host);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

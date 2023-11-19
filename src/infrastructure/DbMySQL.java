@@ -17,7 +17,7 @@ public class DbMySQL extends DbConnection{
     @Override
     public Connection connect() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:"+dbConfiguration.getPort()+"/"+dbConfiguration.getDatabaseName(), dbConfiguration.getUsername(), dbConfiguration.getPassword());
+            Connection connection = DriverManager.getConnection("jdbc:mysql://"+dbConfiguration.getHost()+ ":" +dbConfiguration.getPort()+"/"+dbConfiguration.getDatabaseName(), dbConfiguration.getUsername(), dbConfiguration.getPassword());
             System.out.println("CONEXION A LA BD MYSQL EXITOSA...");
             return connection;
         } catch (SQLException e) {

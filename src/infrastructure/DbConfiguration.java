@@ -5,12 +5,14 @@ public class DbConfiguration {
     private String password;
     private int port;
     private String databaseName;
+    private String host;
 
-    public DbConfiguration(String username, String password, int port, String databaseName) {
+    public DbConfiguration(String username, String password, int port, String databaseName, String host) {
         this.username = username;
         this.password = password;
         this.port = port;
         this.databaseName = databaseName;
+        this.host = host;
     }
 
     public void setUsername(String username) {
@@ -43,5 +45,13 @@ public class DbConfiguration {
 
     public String getDatabaseName() {
         return databaseName;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
     }
 }

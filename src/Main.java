@@ -21,24 +21,28 @@ public class Main {
         DbFactory factory = DbFactory.getDbInstance(readerConfiguration);
         try{
             Connection connection = factory.createDbConnection().connect();
+
             System.out.println(factory.createDbConnection().getCurrentDate(connection));
             System.out.println(factory.createDbConnection().getCurrentHour(connection));
-            AbstractRepository<Product> PizzaDAO= new PizzaRepository(connection);
-            AbstractRepository<Employee> waiterDAO= new WaiterRepository(connection);
-            AbstractRepository<Employee> cookDAO = new CookRepository(connection);
-            System.out.println(PizzaDAO.getById(1));
-            System.out.println(PizzaDAO.getAll());
+
+            AbstractRepository<Product> pizzaRepository= new PizzaRepository(connection);
+            AbstractRepository<Employee> waiterRepository= new WaiterRepository(connection);
+            AbstractRepository<Employee> cookRepository = new CookRepository(connection);
+
+            System.out.println(pizzaRepository.getById(1));
+            System.out.println(pizzaRepository.getAll());
             Product pizza3 = new Product("Vegana",12.99);
-            //PizzaDAO.create(pizza3);
-            //System.out.println(PizzaDAO.getAll());
-            //PizzaDAO.delete(new Product("",0));
-            //PizzaDAO.update(1,new Product(0,"Margherita updated",9));
-            System.out.println(PizzaDAO.getAll());
-            System.out.println(waiterDAO.getAll());
-            System.out.println(waiterDAO.getById(1));
-            //waiterDAO.create(new Employee("Ruben Urrego",21));
-            //cookDAO.create(new Employee("Ruben Urrego",21));
-            System.out.println(waiterDAO.getAll());
+
+            //pizzaRepository.create(pizza3);
+            //System.out.println(pizzaRepository.getAll());
+            //pizzaRepository.delete(new Product("",0));
+            //pizzaRepository.update(1,new Product(0,"Margherita updated",9));
+            System.out.println(pizzaRepository.getAll());
+            System.out.println(waiterRepository.getAll());
+            System.out.println(waiterRepository.getById(1));
+            //waiterRepository.create(new Employee("Ruben Urrego",21));
+            //cookRepository.create(new Employee("Ruben Urrego",21));
+            System.out.println(waiterRepository.getAll());
             TableOperations<Product> operations = new ProductOperations(connection);
             TableOperations<Employee> employeedOperations = new EmployeeOperations(connection);
             System.out.println(operations.getUnion("pizza","beverage"));
