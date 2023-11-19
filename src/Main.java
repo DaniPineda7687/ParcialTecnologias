@@ -1,5 +1,6 @@
 import domain.Employee;
 import domain.Product;
+import infrastructure.DbConfiguration;
 import infrastructure.DbFactory;
 import infrastructure.ReaderConfiguration;
 import infrastructure.Repositories.AbstractRepository;
@@ -17,6 +18,14 @@ import java.sql.SQLOutput;
 public class Main {
     public static void main(String[] args) {
         ReaderConfiguration readerConfiguration = new JSONReader();
+        System.out.println("CONFIGURACION DE LA BD");
+        System.out.println("Base de datos: " + readerConfiguration.getDbSelected());
+        DbConfiguration dbConfiguration = readerConfiguration.getDatabaseConfiguration(readerConfiguration.getDbSelected());
+        System.out.println("User: " + dbConfiguration.getUsername());
+        System.out.println("Host: " + dbConfiguration.getHost());
+        System.out.println("Port: " + dbConfiguration.getPort());
+        System.out.println("Database: " + dbConfiguration.getDatabaseName());
+
 
         DbFactory factory = DbFactory.getDbInstance(readerConfiguration);
         try{
