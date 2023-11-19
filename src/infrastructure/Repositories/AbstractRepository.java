@@ -11,7 +11,6 @@ public abstract class AbstractRepository<T> {
     public AbstractRepository(Connection connection){
         this.connection = connection;
     };
-
     public abstract List<T> getAll();
     public abstract T getById(int id);
     public abstract boolean create(T entity);
